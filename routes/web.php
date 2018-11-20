@@ -14,7 +14,22 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
 Route::get('/master', function () {
     return view('master');
 });
 
+Route::get('/contact', function () {
+    return view('contact');
+});
+
+Route::get('/wishlist', function () {
+    return view('wishlist');
+});
+
+Route::get('/about', function () {
+    return view('about');
+});
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

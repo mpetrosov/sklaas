@@ -1,1 +1,15 @@
 about 
+
+
+tabels
+
+users   -> id
+        -> name
+
+
+items   -> id
+        -> name
+        -> discription
+        -> link
+        -> user_id
+

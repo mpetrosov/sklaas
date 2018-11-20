@@ -1,8 +1,33 @@
 /* *{
     text-decoration: none;
 } */
+html{
+    padding: 0;
+    margin: 0;
+}
 
-.logo{
+body{
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    display:block;
+    position: relative;
+}
+
+body::after {
+    background-image: url("../img/banner-880302_1920.jpg");;
+    background-size: cover;
+    background-attachment: fixed;
+    content: "";
+    opacity: 0.1;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: -1;   
+}
+/* .logo{
     background-image: url("../img/banner-880302_1920.jpg");
     background-repeat: no-repeat;
     background-position: center;
@@ -11,12 +36,12 @@
     position: sticky;
     top: 0;
     border-radius: 5px;
-}
+} */
 
 .nav{
     border-bottom: 1px solid #eaeaeb;
     text-align: right;
-    height: 70px;
+    height:70px;
     line-height: 70px;
     font-family: 'Open Sans', sans-serif;
 }
@@ -43,6 +68,7 @@ label{
 }
 
 span{
+    background-color: #54d17a;
     color:#54d17a;
 }
 
@@ -50,7 +76,7 @@ span{
     display: none;
 }
 
-@media only screen and (max-width: 600px){
+@media only screen and (max-width: 550px){
     label{
         display:block;
         cursor: pointer;
@@ -72,3 +98,13 @@ span{
     }
 }
 
+.footer-img{
+    opacity: 0.5;
+    background-image: url("../img/saint-nicholas-2965161_1280.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    color: black;
+    position: sticky;
+    top: 0;
+}

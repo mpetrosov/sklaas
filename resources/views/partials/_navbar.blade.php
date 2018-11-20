@@ -1,0 +1,13 @@
+
+        <div class="nav">
+            <label for="toggle">&#9776;</label>
+            <input type="checkbox" id="toggle"/>
+            <div class="menu">
+                <a href="/">Home</a>
+                <a href="/about">Over ons</a>
+                <span><a href="/wishlist">maak verlanglijst</a></span>
+                <a href="/contact">Contact</a>
+                <a href="/login">login</a>
+            </div>
+        </div>
+   

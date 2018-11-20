@@ -2219,7 +2219,7 @@ pre code {
 
 .form-control {
   display: block;
-  width: 100%;
+  width: 400px;
   height: calc(2.19rem + 2px);
   padding: 0.375rem 0.75rem;
   font-size: 0.9rem;
@@ -4505,7 +4505,7 @@ input[type="button"].btn-block {
   }
 }
 
-.nav {
+/* .nav {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4514,7 +4514,7 @@ input[type="button"].btn-block {
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
-}
+} */
 
 .nav-link {
   display: block;
