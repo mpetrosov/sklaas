@@ -14,26 +14,34 @@
 @section('content')
 
     <br/>
-    <div class="row justify-content-center">
-        <form>
+    <div class="row justify-content-left wishlist">
+        <h1 class="wish-header">Verlanglijst</h1>
+        <div class="wish">
+
+        </div>
+    </div>
+    
+    <div class="row justify-content-center"> 
+        <form method="POST" action="/">
+                @csrf
             <div class="form-group">
-                <label for="">Email address</label>
+                <label for=""></label>
                 <input type="text" class="form-control"  aria-describedby="emailHelp" placeholder="je naam">
                 <small class="form-text text-muted"> </small>
             </div>
             <div class="form-group">
                 <label for=""></label>
-                <input type="text" class="form-control"  placeholder="Password">
+                <input type="text" class="form-control"  placeholder="wenscadeau">
             </div>
             <div class="form-group">
-                <label for="">Password</label>
-                <input type="text" class="form-control"  placeholder="Password">
+                <label for=""></label>
+                <input type="text" class="form-control"  placeholder="beschrijvnig">
             </div>
             <div class="form-group">
-                <label for="">Password</label>
-                <input type="text" class="form-control"  placeholder="Password">
+                <label for=""></label>
+                <input type="text" class="form-control"  placeholder="link">
             </div>
-            <button type="submit" class="btn btn-success">Submit</button>
+            <button type="submit" class="btn btn-success">toevoegen</button>
         </form>
 </div>
 @endsection

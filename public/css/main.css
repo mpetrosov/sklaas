@@ -108,3 +108,7 @@ span{
     position: sticky;
     top: 0;
 }
+
+.footer{
+    padding-top: 10px;
+}

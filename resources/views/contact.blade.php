@@ -9,3 +9,7 @@
 <title>Document</title>
     
 @endsection
+
+@section('footer')
+<div class="footer-img"><img src="../img/saint-nicholas-2965161_1280.jpg" ></div>  
+@endsection
