@@ -6,7 +6,7 @@
         <div class="menu">
             <a href="/">Home</a>
             <a href="/about">Over ons</a>
-            <span><a href="/wishlist">maak verlanglijst</a></span>
+            {{-- <span><a href="/wishlist">maak verlanglijst</a></span> --}}
             <a href="/contact">Contact</a>
             <a href="/login">login</a>
         </div>

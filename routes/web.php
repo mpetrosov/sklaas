@@ -23,16 +23,19 @@ Route::get('/contact', function () {
     return view('contact');
 });
 
-Route::get('/wishlist', function () {
-    return view('wishlist');
-});
+// Route::get('/wishlist', function () {
+//     return view('wishlist');
+// });
 
 Route::get('/about', function () {
     return view('about');
 });
 Auth::routes();
 
+// Route::get('/', 'ItemController@create');
 Route::post('/', 'ItemController@store');//insert into db
+Route::get('/wishlist', 'ItemController@show');
+Route::delete('/wishlist/{id}', 'ItemController@destroy');
 
 // Route::get('/home', 'HomeController@index')->name('home');
 //Route::resource('projects', 'ProjectsController');

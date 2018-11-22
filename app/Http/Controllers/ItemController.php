@@ -14,7 +14,8 @@ class ItemController extends Controller
      */
     public function index()
     {
-        //
+        // $items = Item::all();
+        // return view('wishlist', compact('/'));
     }
 
     /**
@@ -34,8 +35,18 @@ class ItemController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    {   
+        
+        $validated = request()->validate([
+            'name' => 'required', 
+            'desc' => 'required',
+            'link' => 'nullable',
+            'user_id' => 'exists:users,id'
+        ]);
+    
+        Item::create($validated);
+
+        return redirect('/wishlist');
     }
 
     /**
@@ -44,9 +55,11 @@ class ItemController extends Controller
      * @param  \App\Item  $item
      * @return \Illuminate\Http\Response
      */
-    public function show(Item $item)
+    public function show(Item $id)
     {
-        //
+        $items = Item::where('user_id', auth()->id())->get();
+        // dd($items);
+        return view('wishlist', compact('items'));
     }
 
     /**
@@ -78,8 +91,10 @@ class ItemController extends Controller
      * @param  \App\Item  $item
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Item $item)
+    public function destroy($id)
     {
-        //
+        $items = Item::find($id);
+        $items->delete();
+        return redirect('/wishlist')->with('success', 'Stock has been deleted Successfully');
     }
 }

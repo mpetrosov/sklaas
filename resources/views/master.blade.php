@@ -10,7 +10,7 @@
     </div>
     
     <div class="container">
-        @yield('content')
+      @include('/partials/_content')
     </div>
     <div class="footer">
             @yield('footer')
