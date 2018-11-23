@@ -13,3 +13,136 @@ items   -> id
         -> link
         -> user_id
 
+
+@extends('master')
+
+@section('header')
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+<script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>       
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+
+<meta name="csrf-token" content="{{ csrf_token() }}">
+<link rel="stylesheet" href="{{asset('css/app.css')}}">
+<link rel="stylesheet" href="{{asset('css/main.css')}}">
+{{-- <link rel="stylesheet" href="{{asset('js/app.js')}}"> --}}
+<title>Document</title>
+    
+@endsection
+
+@section('content')
+
+    <br/>   
+    <div id="itemModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form method="POST" action="/" id="item_form">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Add Data</h4>
+                    </div>
+                    <div class="modal-body">
+                            @csrf
+                            <span id="form_output"></span>
+                        
+                        <div class="form-group">
+                            <label for=""></label>
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <input type="text" class="form-control" name="name" id="name" placeholder="wenscadeau">
+                        </div>
+                        <div class="form-group">
+                            <label for=""></label>
+                            <input type="text" class="form-control"  name="desc" id="desc" placeholder="beschrijvnig">
+                        </div>
+                        <div class="form-group">
+                            <label for=""></label>
+                            <input type="text" class="form-control" name="link" name="link" placeholder="link">
+                            <input type="text" hidden name="user_id" value="{{ Auth::user()->id }}">
+                        </div>
+                        <div class="modal-footer">
+                            <input type="hidden" name="button_action" id="button_action" value="insert"/>
+                            <input type="submit" name="submit" id="action" value="Add" class="btn btm info"/>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                        
+                    </div>
+            </form>
+                </div>
+            </div> 
+        
+    </div>
+    <div align="left">
+        <button type="button" name="add" id="add_data" class="btn btn-success btn-sm">Add</button>
+    <div>
+            <h1 class="wish-header">Verlanglijst</h1>
+                <table class="table table bordered" id="item_table"> 
+                   <tr>
+                       <th>Naam</th>
+                       <th>Beshcrtijving</th>
+                       <th>Link</th>
+                   </tr>
+                    <tr> 
+                        <td></td>
+                        <td></td>
+                        <td></td>  
+                        <td><form action="/wishlist" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                            </form>
+                        </td> 
+                    </tr>
+            </table> 
+@endsection
+@section('javascript')
+   
+<script>
+    $(document).ready(function(){
+        $('#item_table').DataTable({
+            "processing": true,
+            "serverSide": true,
+            "ajax": "{{route('wishlist.show', '$items->id')}}",
+            "columns": [
+                {"data": "name"},
+                {"data": "desc"},
+                {"data": "link"}
+            ]
+        });
+        $('#add_data').click(function(){
+            $('#itemModal').modal('show');
+            $('#item_form')[0].reset();
+            $('#form_output').html('');
+            $('#button_action').val('insert');
+            $('#action').val('Add');
+        });
+        $('#item_form').on('submit', function(event){
+            event.preventDefault();
+            var form_data = $(this).serialize();
+            $.ajax({
+                url: "{{route('wishlist.store')}}",
+                method: "POST",
+                data: form_data,
+                dataType: "json",
+                success: function(data)
+                {
+                    
+                }
+            })
+        });
+    });
+</script>
+@endsection
+
+@section('footer')
+<div class="footer-img"><img src="../img/saint-nicholas-2965161_1280.jpg" ></div>  
+@endsection
+
+

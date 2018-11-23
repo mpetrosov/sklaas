@@ -27,6 +27,7 @@
             </tr>
         @endforeach 
     </div>
+   
 
 @endsection
 

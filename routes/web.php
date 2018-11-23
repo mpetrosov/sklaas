@@ -30,11 +30,14 @@ Route::get('/contact', function () {
 Route::get('/about', function () {
     return view('about');
 });
+
 Auth::routes();
 
+Route::resource('/wishlist', 'ItemController');
+Route::get('/wishlist', 'ItemController@index');
 // Route::get('/', 'ItemController@create');
 Route::post('/', 'ItemController@store');//insert into db
-Route::get('/wishlist', 'ItemController@show');
+// Route::get('/wishlist', 'ItemController@show');
 Route::delete('/wishlist/{id}', 'ItemController@destroy');
 
 // Route::get('/home', 'HomeController@index')->name('home');

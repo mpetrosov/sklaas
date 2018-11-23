@@ -14,6 +14,9 @@ class ItemController extends Controller
      */
     public function index()
     {
+        
+        $items = Item::where('user_id', auth()->id())->paginate(2);
+        return view('wishlist', compact('items'));
         // $items = Item::all();
         // return view('wishlist', compact('/'));
     }
@@ -57,9 +60,9 @@ class ItemController extends Controller
      */
     public function show(Item $id)
     {
-        $items = Item::where('user_id', auth()->id())->get();
-        // dd($items);
-        return view('wishlist', compact('items'));
+        // $items = Item::where('user_id', auth()->id())->get();
+        // // dd($items);
+        // return view('wishlist', compact('items'));
     }
 
     /**
